@@ -24,7 +24,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" min="-2" pref="377" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -58,7 +58,6 @@
                       <Group type="103" groupAlignment="2" attributes="0">
                           <Component id="memberUsername" alignment="2" min="-2" pref="207" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberPassword" alignment="2" min="-2" pref="207" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="2" attributes="0">
                               <Component id="memberRegister" min="-2" pref="90" max="-2" attributes="0"/>
@@ -67,8 +66,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="memberLogin" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="memberPassword" alignment="2" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -81,9 +81,9 @@
                       <Component id="memberUsername" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="memberPassword" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="memberPassword" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="memberRegister" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="exit" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
@@ -147,8 +147,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="memberUsername">
             </Component>
-            <Component class="javax.swing.JTextField" name="memberPassword">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -156,6 +154,8 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="memberPassword">
             </Component>
           </SubComponents>
         </Container>
@@ -176,15 +176,17 @@
                       <Group type="103" groupAlignment="2" attributes="0">
                           <Component id="adminUsername" alignment="2" min="-2" pref="207" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="adminPassword" alignment="2" min="-2" pref="207" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="2" attributes="0">
-                              <Component id="exit1" min="-2" pref="90" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="AdminLogin" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="adminPassword" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="2" attributes="0">
+                                  <Component id="exit1" min="-2" pref="90" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="AdminLogin" min="-2" pref="90" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="87" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -198,8 +200,8 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="adminPassword" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="adminPassword" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="exit1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="AdminLogin" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
@@ -256,7 +258,10 @@
             </Component>
             <Component class="javax.swing.JTextField" name="adminUsername">
             </Component>
-            <Component class="javax.swing.JTextField" name="adminPassword">
+            <Component class="javax.swing.JPasswordField" name="adminPassword">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminPasswordActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
