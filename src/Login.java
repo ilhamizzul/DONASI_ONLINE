@@ -228,6 +228,7 @@ public class Login extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null, "Mohon Maaf, ulangi lagi prosedur");
 //        }
         new Register().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_memberRegisterActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed

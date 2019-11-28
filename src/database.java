@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,52 +20,6 @@ import java.util.logging.Logger;
  * @author ASUS
  */
 public class database {
-//    public static com.mysql.jdbc.Connection setKoneksi() {
-//        String konString ="jdbc:mysql://localhost/db_donasi_online";
-//        com.mysql.jdbc.Connection koneksi = null;
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            koneksi = (com.mysql.jdbc.Connection)DriverManager.getConnection(konString,"root","");
-//            System.out.println("Koneksi Berhasil");
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(database.class.getName()).log(Level.SEVERE,null, ex);
-//            System.out.println("Koneksi Gagal");
-//        } catch (SQLException ex) {
-//            Logger.getLogger(database.class.getName()).log(Level.SEVERE,null, ex);
-//            System.out.println("Koneksi Gagal");
-//        }
-//        return koneksi;
-//
-//    }
-//
-//    public static int execute(String SQL) {
-//        int status = 0;
-//        com.mysql.jdbc.Connection koneksi = setKoneksi();
-//        try {
-//            Statement st = koneksi.createStatement();
-//            status = st.executeUpdate(SQL);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(database.class.getName()).log(Level.SEVERE,null, ex);
-//        }
-//        return status;
-//    }
-//
-//    public static ResultSet executeQuery(String SQL) {
-//        ResultSet rs = null;
-//        com.mysql.jdbc.Connection koneksi = setKoneksi();
-//        try {
-//            Statement st = koneksi.createStatement();
-//            rs = st.executeQuery(SQL);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(database.class.getName()).log(Level.SEVERE,null, ex);
-//        }
-//        return rs;
-//    }
-//
-//    static Object GetConnection() {
-//        throw new UnsupportedOperationException("Not supported yet.");
-//    }
-    
     private static String serverName = "localhost";
     private static String username = "root";
     private static String password = "";
@@ -88,5 +43,18 @@ public class database {
             Logger.getLogger("Get Connection ->  " + database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cn;
+    }
+    
+    public static void theQuery(String query) {
+        Connection cn = null;
+        Statement st = null;
+        try {
+            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_donasi_online", "root", "");
+            st = cn.createStatement();
+            st.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Query Executed");
+        } catch (SQLException ex) {
+            Logger.getLogger(database.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
