@@ -237,27 +237,28 @@ public class Login extends javax.swing.JFrame {
 
     private void memberLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberLoginActionPerformed
         // TODO add your handling code here:
-//        Connection connection;
-//        PreparedStatement ps;
-//        try{
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_testkoneksi?zeroDateTimeBehavior=convertToNull","root", "");
-//            ps = connection.prepareStatement("SELECT * FROM `tb_akun` WHERE username = ? AND password = ?");
-//            ps.setString(1, username.getText());
-//            ps.setString(2, password.getText());
-//            ResultSet result = ps.executeQuery();
-//            if(result.next()){
-//                new PSB().show();
-//                this.dispose();
-//            } else {
-//                JOptionPane.showMessageDialog(rootPane, "Salah!");
-//                password.setText("");
-//                username.requestFocus();
-//                
-//            }
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(rootPane, "Gagal");
-//        }
-//;
+        ResultSet rs;
+        PreparedStatement ps;
+        String username = memberUsername.getText();
+        String password = String.valueOf(memberPassword.getPassword());
+        
+        String query = "SELECT * FROM `tb_member` WHERE `username` = ? AND `password` = ?";
+        
+        try {
+            ps = database.getConnection().prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(rootPane, "Selamat Datang!");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Login Error", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_memberLoginActionPerformed
 
     private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
