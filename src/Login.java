@@ -27,6 +27,16 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
+    
+    private static String session = "none";
+
+    public static String getSession() {
+        return session;
+    }
+
+    public static void setSession(String session) {
+        Login.session = session;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -252,8 +262,10 @@ public class Login extends javax.swing.JFrame {
             rs = ps.executeQuery();
             
             if (rs.next()) {
+                session = "user";
                 JOptionPane.showMessageDialog(rootPane, "Selamat Datang!");
                 this.dispose();
+                new Landing().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Login Error", 2);
             }
@@ -282,8 +294,10 @@ public class Login extends javax.swing.JFrame {
             rs = ps.executeQuery();
             
             if (rs.next()) {
+                session = "admin";
                 JOptionPane.showMessageDialog(rootPane, "Selamat Datang Admin!");
                 this.dispose();
+                new Landing().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Login Error", 2);
             }
