@@ -1,0 +1,20 @@
+[d] connect mysql
+[d] gui landing
+[d] gui login
+[d] gui register
+[d] login
+    [d] admin login
+    [d] member login
+[d] session
+[o] register
+[ ] gui tambah donasi
+[ ] gui lihat profil
+[ ] ???
+[ ] ???
+[ ] ???
+[ ] ???
+[ ] ???
+[ ] done
+
+d: done
+o: on progress
