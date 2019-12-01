@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2019 at 10:42 PM
+-- Generation Time: Dec 01, 2019 at 02:28 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -68,8 +68,19 @@ CREATE TABLE `tb_member` (
   `id_member` int(11) NOT NULL,
   `member_name` varchar(20) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(20) NOT NULL,
+  `gender` enum('male','female') NOT NULL,
+  `no_telepon` varchar(12) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `ban_status` enum('true','false') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_member`
+--
+
+INSERT INTO `tb_member` (`id_member`, `member_name`, `username`, `password`, `gender`, `no_telepon`, `alamat`, `ban_status`) VALUES
+(1, 'ilham izzul', 'ilhamizzul', 'ilhamizzul', 'male', '2147483647', 'probolinggo', 'false');
 
 --
 -- Indexes for dumped tables
@@ -114,7 +125,7 @@ ALTER TABLE `tb_donation`
 -- AUTO_INCREMENT for table `tb_member`
 --
 ALTER TABLE `tb_member`
-  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
