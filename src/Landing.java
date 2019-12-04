@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,7 +31,7 @@ public class Landing extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        profil = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,7 +60,12 @@ public class Landing extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton1.setText("Lihat Profil");
+        profil.setText("Lihat Profil");
+        profil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profilActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Tambah Donasi");
 
@@ -67,7 +75,7 @@ public class Landing extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(profil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -79,7 +87,7 @@ public class Landing extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(profil, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(460, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -89,7 +97,7 @@ public class Landing extends javax.swing.JFrame {
         );
 
         if (Login.getSession() == "admin") {
-            jButton1.setVisible(false);
+            profil.setVisible(false);
         }
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 204));
@@ -204,6 +212,17 @@ public class Landing extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_loginActionPerformed
 
+    private void profilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilActionPerformed
+        // TODO add your handling code here:
+        if (Login.getSession() != "none") {
+            new Profil().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+
+        }
+
+    }//GEN-LAST:event_profilActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -247,7 +266,6 @@ public class Landing extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -257,6 +275,7 @@ public class Landing extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton login;
+    private javax.swing.JButton profil;
     private javax.swing.JLabel tanggal;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,9 +6,9 @@
     [d] admin login
     [d] member login
 [d] session
-[o] register
+[d] register
 [ ] gui tambah donasi
-[ ] gui lihat profil [OPTIONAL]
+[d] gui lihat profil [OPTIONAL]
 [ ] GUI verifikasi petisi donasi
 [ ] GUI BAN MEMBER
 [ ] GUI send donasi

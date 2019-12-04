@@ -262,7 +262,7 @@ public class Login extends javax.swing.JFrame {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                session = "user";
+                session = username;
                 JOptionPane.showMessageDialog(rootPane, "Selamat Datang!");
                 this.dispose();
                 new Landing().setVisible(true);
