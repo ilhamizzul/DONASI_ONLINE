@@ -162,6 +162,10 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        if (Login.getSession() != "none") {
+            login.setText("LOGOUT");
+        }
+
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -207,8 +211,14 @@ public class Landing extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        new Login().setVisible(true);
-        this.setVisible(false);
+        if (Login.getSession() == "none") {
+            new Login().setVisible(true);
+            this.setVisible(false);
+        } else {
+            Login.setSession("none");
+            new Landing().setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_loginActionPerformed
 
     private void profilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilActionPerformed
