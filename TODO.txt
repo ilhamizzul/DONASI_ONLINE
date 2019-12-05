@@ -7,12 +7,13 @@
     [d] member login
 [d] session
 [d] register
+[d] logout
 [o] gui tambah donasi
-[d] gui lihat profil [OPTIONAL]
-[ ] GUI verifikasi petisi donasi
-[ ] GUI BAN MEMBER
-[ ] GUI send donasi
-[ ] GUI detail donasi
+[d] gui lihat profil
+[ ] gui verifikasi petisi donasi
+[ ] gui ban member
+[ ] gui send donasi
+[ ] gui detail donasi
 [ ] ???
 [ ] done
 

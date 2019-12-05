@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2019 at 02:28 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Dec 05, 2019 at 09:05 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,14 +49,22 @@ INSERT INTO `tb_admin` (`id_admin`, `username`, `password`) VALUES
 
 CREATE TABLE `tb_donation` (
   `id_donation` int(11) NOT NULL,
-  `donation_name` varchar(30) NOT NULL,
-  `donation_desc` varchar(100) NOT NULL,
+  `donation_name` varchar(100) NOT NULL,
+  `donation_desc` varchar(500) NOT NULL,
   `target` int(11) NOT NULL,
   `current_acv` int(11) NOT NULL,
-  `status_acceptance` enum('accept','reject') NOT NULL,
+  `status_acceptance` enum('accept','reject','waiting') NOT NULL,
   `clear_status` enum('done','not_done') NOT NULL,
   `id_member` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_donation`
+--
+
+INSERT INTO `tb_donation` (`id_donation`, `donation_name`, `donation_desc`, `target`, `current_acv`, `status_acceptance`, `clear_status`, `id_member`) VALUES
+(1, 'Bantu Izzul Beli Kawasaki', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', 50000000, 0, 'waiting', 'not_done', 1),
+(2, 'Bantu Izzul Beli Rumah', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', 100000000, 0, 'waiting', 'not_done', 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +127,7 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_donation`
 --
 ALTER TABLE `tb_donation`
-  MODIFY `id_donation` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_donation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_member`
