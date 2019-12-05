@@ -98,4 +98,16 @@ public class database {
         return status;
     }
     
+    public static ResultSet executeQuery(String SQL) {
+    ResultSet rs = null;
+    Connection koneksi = getConnection();
+    try {
+        Statement st = koneksi.createStatement();
+        rs = st.executeQuery(SQL);
+    } catch (SQLException ex) {
+        Logger.getLogger(database.class.getName()).log(Level.SEVERE,null, ex);
+    }
+    return rs;
+}
+    
 }

@@ -71,6 +71,12 @@ public class addDonation extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Rp.");
 
+        target.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                targetKeyTyped(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Target");
 
@@ -172,6 +178,12 @@ public class addDonation extends javax.swing.JFrame {
         donation_desc.setText("");
         donation_name.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void targetKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_targetKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_targetKeyTyped
 
     /**
      * @param args the command line arguments
