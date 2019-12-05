@@ -69,7 +69,8 @@ public class database {
     public static Connection getConnection() {
         Connection cn = null;
         
-        MysqlDataSource datasource = new MysqlDataSource();
+        MysqlDataSource datasource;
+        datasource = new MysqlDataSource();
         
         datasource.setServerName(serverName);
         datasource.setUser(username);
