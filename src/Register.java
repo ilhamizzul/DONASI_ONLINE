@@ -61,7 +61,7 @@ public class Register extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Nama Member");
+        jLabel2.setText("Member Name");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Username");
@@ -69,7 +69,7 @@ public class Register extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Password");
 
-        close.setText("Tutup");
+        close.setText("Close");
         close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeActionPerformed(evt);
@@ -86,7 +86,7 @@ public class Register extends javax.swing.JFrame {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setText("Nomor Telepon");
+        jLabel5.setText("Phone Number");
 
         nomor_telepon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -95,7 +95,7 @@ public class Register extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setText("Alamat");
+        jLabel6.setText("Address");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setText("+62");
@@ -111,11 +111,11 @@ public class Register extends javax.swing.JFrame {
 
         gender.add(male);
         male.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        male.setText("Laki-laki");
+        male.setText("Male");
 
         gender.add(perempuan);
         perempuan.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        perempuan.setText("Perempuan");
+        perempuan.setText("Female");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -249,6 +249,7 @@ public class Register extends javax.swing.JFrame {
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
         this.dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_closeActionPerformed
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed

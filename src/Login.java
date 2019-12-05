@@ -5,6 +5,7 @@
  */
 
 
+import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -49,13 +50,14 @@ public class Login extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        memberRegister = new javax.swing.JButton();
         exit = new javax.swing.JButton();
         memberLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         memberUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         memberPassword = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        register = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         AdminLogin = new javax.swing.JButton();
@@ -67,23 +69,18 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        memberRegister.setBackground(new java.awt.Color(0, 153, 255));
-        memberRegister.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        memberRegister.setText("Register");
-        memberRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                memberRegisterActionPerformed(evt);
-            }
-        });
+        jPanel1.setLayout(null);
 
         exit.setBackground(new java.awt.Color(0, 153, 255));
         exit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        exit.setText("Tutup");
+        exit.setText("Close");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
             }
         });
+        jPanel1.add(exit);
+        exit.setBounds(93, 192, 90, 32);
 
         memberLogin.setBackground(new java.awt.Color(0, 153, 255));
         memberLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -93,50 +90,40 @@ public class Login extends javax.swing.JFrame {
                 memberLoginActionPerformed(evt);
             }
         });
+        jPanel1.add(memberLogin);
+        memberLogin.setBounds(201, 192, 90, 32);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Username");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(158, 19, 69, 17);
+        jPanel1.add(memberUsername);
+        memberUsername.setBounds(65, 54, 255, 36);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Password");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(159, 102, 67, 17);
+        jPanel1.add(memberPassword);
+        memberPassword.setBounds(65, 131, 255, 35);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(memberUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(memberRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(memberLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(memberPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(memberUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(memberPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(memberLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel5.setText("Don't Have an Account? ");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(100, 240, 132, 16);
+
+        register.setForeground(new java.awt.Color(0, 0, 204));
+        register.setText("Register");
+        register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerMouseEntered(evt);
+            }
+        });
+        jPanel1.add(register);
+        register.setBounds(240, 240, 48, 16);
 
         jTabbedPane1.addTab("Member", jPanel1);
 
@@ -203,7 +190,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exit1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Admin", jPanel2);
@@ -216,30 +203,11 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void memberRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberRegisterActionPerformed
-        // TODO add your handling code here:
-//        String Username = username.getText();
-//        String Password = password.getText();
-//        
-//        try {
-//            try(Statement statement = (Statement) file_koneksi.GetConnection().createStatement()){
-//                statement.executeUpdate("insert into tb_akun(username, password) VALUES ('"+Username+"','"+Password+"');");
-//            }
-//            JOptionPane.showMessageDialog(null, "Selamat! anda berhasil sign Up!");
-//        } catch (Exception t) {
-//            JOptionPane.showMessageDialog(null, "Mohon Maaf, ulangi lagi prosedur");
-//        }
-        new Register().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_memberRegisterActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
@@ -311,6 +279,15 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_adminPasswordActionPerformed
 
+    private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
+        new Register().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registerMouseClicked
+
+    private void registerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseEntered
+        register.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_registerMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -359,12 +336,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton memberLogin;
     private javax.swing.JPasswordField memberPassword;
-    private javax.swing.JButton memberRegister;
     private javax.swing.JTextField memberUsername;
+    private javax.swing.JLabel register;
     // End of variables declaration//GEN-END:variables
 }
