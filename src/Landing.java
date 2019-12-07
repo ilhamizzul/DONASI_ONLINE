@@ -36,6 +36,16 @@ public class Landing extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); 
         tanggal.setText(sdf.format(cal.getTime()));
     }
+    
+    private static String session = "none";
+
+    public static String getDonateSession() {
+        return session;
+    }
+
+    public static void setDonateSession(String session) {
+        Landing.session = session;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -176,13 +186,13 @@ public class Landing extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        dataTable.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        dataTable.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         dataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Petition Name", "Description", "Current Achievement", "Target"
+                "Petition Maker", "Petition Name", "Current Achievement", "Target"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -191,6 +201,11 @@ public class Landing extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dataTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(dataTable);
@@ -274,6 +289,7 @@ public class Landing extends javax.swing.JFrame {
             new Login().setVisible(true);
             this.setVisible(false);
         } else {
+            System.out.println(Login.getSession());
             Login.setSession("none");
             new Landing().setVisible(true);
             this.setVisible(false);
@@ -302,24 +318,28 @@ public class Landing extends javax.swing.JFrame {
     }//GEN-LAST:event_addDonationActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        String kolom[] = {"Petition Name", "Description", "Current Achievement", "Target"};
+        String kolom[] = {"Petition Maker", "Petition Name", "Current Achievement", "Target"};
         DefaultTableModel dtm = new DefaultTableModel(null, kolom);
-        String SQL = "SELECT * FROM tb_donation";
+        String SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member)";
         ResultSet rs = database.executeQuery(SQL);
         try{
             while(rs.next()){
                 String donation_name = rs.getString(2);
-                String donation_desc = rs.getString(3);
-                String target = rs.getString(5);
-                String current_acv = rs.getString(4);
-                String data[] = {donation_name, donation_desc, target, current_acv};
+                String member_name = rs.getString(1);
+                String current_acv = rs.getString(3);
+                String target = rs.getString(4);
+                String data[] = {member_name, donation_name, current_acv, target};
                 dtm.addRow(data);
             }
         } catch (SQLException ex) {
-//            Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Landing.class.getName()).log(Level.SEVERE, null, ex);
         }
         dataTable.setModel(dtm);
     }//GEN-LAST:event_formWindowOpened
+
+    private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
+        Landing.setDonateSession(String.valueOf(dataTable.getSelectedRow()));
+    }//GEN-LAST:event_dataTableMouseClicked
 
     /**
      * @param args the command line arguments

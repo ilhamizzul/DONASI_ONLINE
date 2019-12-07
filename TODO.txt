@@ -9,6 +9,7 @@
 [d] register
 [d] logout
 [o] gui tambah donasi
+[d] tambah donasi
 [d] gui lihat profil
 [ ] gui verifikasi petisi donasi
 [ ] gui ban member

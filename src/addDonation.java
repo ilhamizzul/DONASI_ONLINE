@@ -1,3 +1,11 @@
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -37,7 +45,7 @@ public class addDonation extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         target = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        submit = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -80,7 +88,12 @@ public class addDonation extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Target");
 
-        jButton1.setText("Submit");
+        submit.setText("Submit");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Clear");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +121,7 @@ public class addDonation extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(submit))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,7 +156,7 @@ public class addDonation extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(submit)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addContainerGap(85, Short.MAX_VALUE))
@@ -185,6 +198,46 @@ public class addDonation extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_targetKeyTyped
 
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        ResultSet rs;
+        PreparedStatement ps;
+        String donation_name = this.donation_name.getText();
+        String donation_desc = this.donation_desc.getText();
+        String target = this.target.getText();
+        String current_acv = "0";
+        String status_acceptance = "waiting";
+        String clear_status = "not_done";
+        String id_member = "";
+        String get_id_member = "SELECT id_member FROM tb_member WHERE USERNAME='" + Login.getSession() + "'";
+        
+        try {
+            ps = database.getConnection().prepareStatement(get_id_member);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                id_member = rs.getString("id_member");
+            } else {
+                JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(addDonation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (donation_name.equals("") || donation_desc.equals("") || target.equals("")){
+            JOptionPane.showMessageDialog(this, "Harap Lengkapi Data","Error",JOptionPane.WARNING_MESSAGE);
+        } else {
+            String SQL = "INSERT INTO tb_donation (donation_name,donation_desc,target,current_acv,status_acceptance,clear_status,id_member)"
+                + "VALUES('"+donation_name+"','"+donation_desc+"','"+target+"','"+current_acv+"','"+status_acceptance+"','"+clear_status+"','"+id_member+"')";
+            int status = database.execute(SQL);
+            if (status != 0) {
+                JOptionPane.showMessageDialog(this, "Berhasil membuat Petisi! Silahkan menunggu verifikasi dari admin", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal membuat Petisi !", "Gagal", JOptionPane.ERROR_MESSAGE);
+            }   
+        }
+    }//GEN-LAST:event_submitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,7 +276,6 @@ public class addDonation extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea donation_desc;
     private javax.swing.JTextField donation_name;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -233,6 +285,7 @@ public class addDonation extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton submit;
     private javax.swing.JTextField target;
     // End of variables declaration//GEN-END:variables
 }
