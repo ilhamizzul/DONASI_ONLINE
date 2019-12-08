@@ -35,6 +35,12 @@ public class Landing extends javax.swing.JFrame {
         cal.getTime(); 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); 
         tanggal.setText(sdf.format(cal.getTime()));
+        if (Login.getSession() != "none") {
+            username.setText("Welcome : " + Login.getSession());
+        } else {
+            username.setText("");
+        }
+        
     }
     
     private static String session = "none";
@@ -68,7 +74,8 @@ public class Landing extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        viewDetail = new javax.swing.JButton();
+        username = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -229,22 +236,34 @@ public class Landing extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
-        jButton1.setText("View Detail");
+        viewDetail.setText("View Detail");
+        viewDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewDetailActionPerformed(evt);
+            }
+        });
+
+        username.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        username.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(username)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(viewDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(username))
                 .addContainerGap())
         );
 
@@ -320,7 +339,7 @@ public class Landing extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         String kolom[] = {"Petition Maker", "Petition Name", "Current Achievement", "Target"};
         DefaultTableModel dtm = new DefaultTableModel(null, kolom);
-        String SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member)";
+        String SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept'";
         ResultSet rs = database.executeQuery(SQL);
         try{
             while(rs.next()){
@@ -338,8 +357,25 @@ public class Landing extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
-        Landing.setDonateSession(String.valueOf(dataTable.getSelectedRow()));
+        Landing.setDonateSession(
+                dataTable.getValueAt(
+                        dataTable.getSelectedRow(), 1
+                ).toString()
+        );
+        
     }//GEN-LAST:event_dataTableMouseClicked
+
+    private void viewDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailActionPerformed
+        if (Login.getSession() != "none") {
+            if (Landing.getDonateSession() != "none") {
+                new detailDonation().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Anda belum memilih donasi yang ingin dilihat", "Error", 1);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+        }
+    }//GEN-LAST:event_viewDetailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -384,7 +420,6 @@ public class Landing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDonation;
     private javax.swing.JTable dataTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -395,5 +430,7 @@ public class Landing extends javax.swing.JFrame {
     private javax.swing.JButton login;
     private javax.swing.JButton profil;
     private javax.swing.JLabel tanggal;
+    private javax.swing.JLabel username;
+    private javax.swing.JButton viewDetail;
     // End of variables declaration//GEN-END:variables
 }
