@@ -43,6 +43,8 @@ public class detailDonation extends javax.swing.JFrame {
         target = new javax.swing.JLabel();
         donate = new javax.swing.JButton();
         close = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        funds = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -79,6 +81,11 @@ public class detailDonation extends javax.swing.JFrame {
         target.setText("jLabel2");
 
         donate.setText("donate");
+        donate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                donateActionPerformed(evt);
+            }
+        });
 
         close.setText("close");
         close.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +94,12 @@ public class detailDonation extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setText("funds that have been collected");
+
+        funds.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        funds.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -94,27 +107,28 @@ public class detailDonation extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(donation_name)
+                            .addComponent(donation_desc)
+                            .addComponent(username)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(264, 264, 264)
-                                .addComponent(donation_name))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(donation_desc))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(305, 305, 305)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(target)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(username)))))
-                        .addGap(0, 295, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(target)))
+                        .addGap(0, 496, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(funds)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(close)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(donate)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(156, 156, 156))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,14 +139,17 @@ public class detailDonation extends javax.swing.JFrame {
                 .addComponent(username)
                 .addGap(18, 18, 18)
                 .addComponent(donation_desc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(target)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(target))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(donate)
-                    .addComponent(close))
+                    .addComponent(close)
+                    .addComponent(funds))
                 .addContainerGap())
         );
 
@@ -156,6 +173,7 @@ public class detailDonation extends javax.swing.JFrame {
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
         this.dispose();
+        new Landing().setVisible(true);
     }//GEN-LAST:event_closeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -171,7 +189,8 @@ public class detailDonation extends javax.swing.JFrame {
                 username.setText(rs.getString("username"));
                 donation_name.setText(rs.getString("donation_name"));
                 donation_desc.setText(rs.getString("donation_desc"));
-                target.setText(rs.getString("target"));
+                target.setText("Rp." + rs.getString("target"));
+                funds.setText("Rp. " + rs.getString("current_acv"));
             } else {
                 JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
             }
@@ -179,6 +198,11 @@ public class detailDonation extends javax.swing.JFrame {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void donateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donateActionPerformed
+        new sendDonation().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_donateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,7 +244,9 @@ public class detailDonation extends javax.swing.JFrame {
     private javax.swing.JButton donate;
     private javax.swing.JLabel donation_desc;
     private javax.swing.JLabel donation_name;
+    private javax.swing.JLabel funds;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel target;

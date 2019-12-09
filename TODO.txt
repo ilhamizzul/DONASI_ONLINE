@@ -13,7 +13,8 @@
 [d] gui lihat profil
 [ ] gui verifikasi petisi donasi
 [ ] gui ban member
-[ ] gui send donasi
+[o] gui send donasi
+[d] send donasi
 [o] gui detail donasi
 [ ] ???
 [ ] done

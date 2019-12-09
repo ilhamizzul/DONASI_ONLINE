@@ -183,6 +183,7 @@ public class addDonation extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new Landing().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -232,6 +233,7 @@ public class addDonation extends javax.swing.JFrame {
             if (status != 0) {
                 JOptionPane.showMessageDialog(this, "Berhasil membuat Petisi! Silahkan menunggu verifikasi dari admin", "Sukses", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
+                new Landing().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Gagal membuat Petisi !", "Gagal", JOptionPane.ERROR_MESSAGE);
             }   

@@ -76,6 +76,8 @@ public class Landing extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         viewDetail = new javax.swing.JButton();
         username = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -246,6 +248,10 @@ public class Landing extends javax.swing.JFrame {
         username.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         username.setText("jLabel2");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Done", "Not Done" }));
+
+        jLabel2.setText("Donation Status");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -254,6 +260,10 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(username)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -263,7 +273,9 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(username))
+                    .addComponent(username)
+                    .addComponent(jComboBox1)
+                    .addComponent(jLabel2))
                 .addContainerGap())
         );
 
@@ -330,6 +342,7 @@ public class Landing extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (Login.getSession() != "none") {
             new addDonation().setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
 
@@ -369,6 +382,7 @@ public class Landing extends javax.swing.JFrame {
         if (Login.getSession() != "none") {
             if (Landing.getDonateSession() != "none") {
                 new detailDonation().setVisible(true);
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Anda belum memilih donasi yang ingin dilihat", "Error", 1);
             }
@@ -420,7 +434,9 @@ public class Landing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDonation;
     private javax.swing.JTable dataTable;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
