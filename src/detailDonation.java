@@ -177,26 +177,26 @@ public class detailDonation extends javax.swing.JFrame {
     }//GEN-LAST:event_closeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ResultSet rs;
-        PreparedStatement ps;
-        String query = "SELECT * FROM tb_member join tb_donation using (id_member) where donation_name = '"+Landing.getDonateSession()+"'";
-        
-        try {
-            ps = database.getConnection().prepareStatement(query);
-            rs = ps.executeQuery();
-            
-            if (rs.next()) {
-                username.setText(rs.getString("username"));
-                donation_name.setText(rs.getString("donation_name"));
-                donation_desc.setText(rs.getString("donation_desc"));
-                target.setText("Rp." + rs.getString("target"));
-                funds.setText("Rp. " + rs.getString("current_acv"));
-            } else {
-                JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+            ResultSet rs;
+            PreparedStatement ps;
+            String query = "SELECT * FROM tb_member join tb_donation using (id_member) where donation_name = '"+Landing.getDonateSession()+"'";
+
+            try {
+                ps = database.getConnection().prepareStatement(query);
+                rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    username.setText(rs.getString("username"));
+                    donation_name.setText(rs.getString("donation_name"));
+                    donation_desc.setText(rs.getString("donation_desc"));
+                    target.setText("Rp." + rs.getString("target"));
+                    funds.setText("Rp. " + rs.getString("current_acv"));
+                } else {
+                    JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_formWindowOpened
 
     private void donateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donateActionPerformed

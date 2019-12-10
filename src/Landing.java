@@ -1,6 +1,7 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -35,11 +36,13 @@ public class Landing extends javax.swing.JFrame {
         cal.getTime(); 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); 
         tanggal.setText(sdf.format(cal.getTime()));
+        
         if (Login.getSession() != "none") {
             username.setText("Welcome : " + Login.getSession());
         } else {
             username.setText("");
         }
+        
         
     }
     
@@ -78,6 +81,9 @@ public class Landing extends javax.swing.JFrame {
         username = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        btnAccept = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
+        btnWaiting = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -232,7 +238,7 @@ public class Landing extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -252,6 +258,27 @@ public class Landing extends javax.swing.JFrame {
 
         jLabel2.setText("Donation Status");
 
+        btnAccept.setText("Accept");
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
+            }
+        });
+
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+
+        btnWaiting.setText("Waiting");
+        btnWaiting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWaitingActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -260,6 +287,12 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(username)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnWaiting, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,15 +302,29 @@ public class Landing extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(username)
-                    .addComponent(jComboBox1)
-                    .addComponent(jLabel2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(viewDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addComponent(username)
+                        .addComponent(jComboBox1)
+                        .addComponent(jLabel2))
+                    .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnWaiting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        if (Login.getSession() != "admin") {
+            btnAccept.setVisible(false);
+        }
+        if (Login.getSession() != "admin") {
+            btnReject.setVisible(false);
+        }
+        if (Login.getSession() != "admin") {
+            btnWaiting.setVisible(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -351,8 +398,16 @@ public class Landing extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         String kolom[] = {"Petition Maker", "Petition Name", "Current Achievement", "Target"};
+            
         DefaultTableModel dtm = new DefaultTableModel(null, kolom);
-        String SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept'";
+        
+        String SQL;
+        if (Login.getSession() == "admin") {
+            SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member)";
+        } else {
+            SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept'";
+        }
+        
         ResultSet rs = database.executeQuery(SQL);
         try{
             while(rs.next()){
@@ -390,6 +445,45 @@ public class Landing extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
         }
     }//GEN-LAST:event_viewDetailActionPerformed
+
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        // TODO add your handling code here:        
+        PreparedStatement ps;
+        String query = "UPDATE tb_donation SET status_acceptance='accept' WHERE donation_name='"+Landing.getDonateSession()+"'";
+        try {
+            ps = database.getConnection().prepareStatement(query);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Berhasil accept petisi", "Success!", 1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAcceptActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        PreparedStatement ps;
+        String query = "UPDATE tb_donation SET status_acceptance='reject' WHERE donation_name='"+Landing.getDonateSession()+"'";
+        try {
+            ps = database.getConnection().prepareStatement(query);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Berhasil reject petisi", "Success!", 1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRejectActionPerformed
+
+    private void btnWaitingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWaitingActionPerformed
+        // TODO add your handling code here:
+        PreparedStatement ps;
+        String query = "UPDATE tb_donation SET status_acceptance='waiting' WHERE donation_name='"+Landing.getDonateSession()+"'";
+        try {
+            ps = database.getConnection().prepareStatement(query);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Berhasil waiting petisi", "Success!", 1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnWaitingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,6 +527,9 @@ public class Landing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDonation;
+    private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnReject;
+    private javax.swing.JButton btnWaiting;
     private javax.swing.JTable dataTable;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
