@@ -116,7 +116,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profilActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.getSession() == &quot;admin&quot;) {&#xa;    profil.setVisible(false);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.landingSess.getSession() == &quot;admin&quot;) {&#xa;    profil.setVisible(false);&#xa;}"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="addDonation">
@@ -229,7 +229,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.getSession() != &quot;none&quot;) {&#xa;    login.setText(&quot;LOGOUT&quot;);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.landingSess.getSession() != &quot;none&quot;) {&#xa;    login.setText(&quot;LOGOUT&quot;);&#xa;}"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -410,7 +410,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAcceptActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.getSession() != &quot;admin&quot;) {&#xa;    btnAccept.setVisible(false);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.landingSess.getSession() != &quot;admin&quot;) {&#xa;    btnAccept.setVisible(false);&#xa;}"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnReject">
@@ -421,7 +421,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRejectActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.getSession() != &quot;admin&quot;) {&#xa;    btnReject.setVisible(false);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.landingSess.getSession() != &quot;admin&quot;) {&#xa;    btnReject.setVisible(false);&#xa;}"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnWaiting">
@@ -432,7 +432,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnWaitingActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.getSession() != &quot;admin&quot;) {&#xa;    btnWaiting.setVisible(false);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="if (Login.landingSess.getSession() != &quot;admin&quot;) {&#xa;    btnWaiting.setVisible(false);&#xa;}"/>
           </AuxValues>
         </Component>
       </SubComponents>

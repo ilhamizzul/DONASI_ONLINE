@@ -27,6 +27,8 @@ public class Landing extends javax.swing.JFrame {
     String nol_jam ="";
     String nol_menit="";
     String nol_detik="";
+    
+    
     /**
      * Creates new form Landing
      */
@@ -37,8 +39,8 @@ public class Landing extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); 
         tanggal.setText(sdf.format(cal.getTime()));
         
-        if (Login.getSession() != "none") {
-            username.setText("Welcome : " + Login.getSession());
+        if (Login.loginSess.getSession() != "none") {
+            username.setText("Welcome : " + Login.loginSess.getSession());
         } else {
             username.setText("");
         }
@@ -131,7 +133,7 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        if (Login.getSession() == "admin") {
+        if (Login.loginSess.getSession() == "admin") {
             profil.setVisible(false);
         }
 
@@ -195,7 +197,7 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        if (Login.getSession() != "none") {
+        if (Login.loginSess.getSession() != "none") {
             login.setText("LOGOUT");
         }
 
@@ -316,13 +318,13 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        if (Login.getSession() != "admin") {
+        if (Login.loginSess.getSession() != "admin") {
             btnAccept.setVisible(false);
         }
-        if (Login.getSession() != "admin") {
+        if (Login.loginSess.getSession() != "admin") {
             btnReject.setVisible(false);
         }
-        if (Login.getSession() != "admin") {
+        if (Login.loginSess.getSession() != "admin") {
             btnWaiting.setVisible(false);
         }
 
@@ -363,12 +365,12 @@ public class Landing extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        if (Login.getSession() == "none") {
+        if (Login.loginSess.getSession() == "none") {
             new Login().setVisible(true);
             this.setVisible(false);
         } else {
-            System.out.println(Login.getSession());
-            Login.setSession("none");
+            System.out.println(Login.loginSess.getSession());
+            Login.loginSess.setSession("none");
             new Landing().setVisible(true);
             this.setVisible(false);
         }
@@ -376,7 +378,7 @@ public class Landing extends javax.swing.JFrame {
 
     private void profilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilActionPerformed
         // TODO add your handling code here:
-        if (Login.getSession() != "none") {
+        if (Login.loginSess.getSession() != "none") {
             new Profil().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
@@ -387,7 +389,7 @@ public class Landing extends javax.swing.JFrame {
 
     private void addDonationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDonationActionPerformed
         // TODO add your handling code here:
-        if (Login.getSession() != "none") {
+        if (Login.loginSess.getSession() != "none") {
             new addDonation().setVisible(true);
             this.dispose();
         } else {
@@ -402,7 +404,7 @@ public class Landing extends javax.swing.JFrame {
         DefaultTableModel dtm = new DefaultTableModel(null, kolom);
         
         String SQL;
-        if (Login.getSession() == "admin") {
+        if (Login.loginSess.getSession() == "admin") {
             SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member)";
         } else {
             SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept'";
@@ -434,7 +436,7 @@ public class Landing extends javax.swing.JFrame {
     }//GEN-LAST:event_dataTableMouseClicked
 
     private void viewDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailActionPerformed
-        if (Login.getSession() != "none") {
+        if (Login.loginSess.getSession() != "none") {
             if (Landing.getDonateSession() != "none") {
                 new detailDonation().setVisible(true);
                 this.dispose();

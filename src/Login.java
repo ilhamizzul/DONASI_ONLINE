@@ -29,15 +29,17 @@ public class Login extends javax.swing.JFrame {
         initComponents();
     }
     
-    private static String session = "none";
-
-    public static String getSession() {
-        return session;
-    }
-
-    public static void setSession(String session) {
-        Login.session = session;
-    }
+//    private static String session = "none";
+//
+//    public static String getSession() {
+//        return session;
+//    }
+//
+//    public static void setSession(String session) {
+//        Login.session = session;
+//    }
+    
+    static Session loginSess = new Session("none");
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -230,7 +232,8 @@ public class Login extends javax.swing.JFrame {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                session = username;
+//                session = username;
+                loginSess.setSession(username);
                 JOptionPane.showMessageDialog(rootPane, "Selamat Datang!");
                 this.dispose();
                 new Landing().setVisible(true);
@@ -262,7 +265,8 @@ public class Login extends javax.swing.JFrame {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                session = "admin";
+//                session = "admin";
+                loginSess.setSession("admin");
                 JOptionPane.showMessageDialog(rootPane, "Selamat Datang Admin!");
                 this.dispose();
                 new Landing().setVisible(true);
