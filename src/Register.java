@@ -57,6 +57,7 @@ public class Register extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registration");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -225,8 +226,8 @@ public class Register extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -268,48 +269,20 @@ public class Register extends javax.swing.JFrame {
         }
         if (nama_member.equals("") || username.equals("") || password.equals("") || 
                 nomor_telepon.equals("") || alamat.equals("") || JK.equals("")){
-            JOptionPane.showMessageDialog(this, "Harap Lengkapi Data","Error",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please fill all the form!","Error",JOptionPane.WARNING_MESSAGE);
         } else {
             String SQL = "INSERT INTO tb_member (member_name,username, password, gender, no_telepon, alamat, ban_status)"
                 + "VALUES('"+nama_member+"','"+username+"','"+password+"','"+JK+"','"+nomor_telepon+"','"+alamat+"','false')";
             int status = database.execute(SQL);
             if (status != 0) {
-                JOptionPane.showMessageDialog(this, "Data User Berhasil Teregistrasi!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "User Data Successfully Registered!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 new Login().setVisible(true);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Data gagal teregistrasi", "Gagal", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Failed to register!", "Error", JOptionPane.ERROR_MESSAGE);
             }   
         }
         
-//        String query = "INSERT INTO `tb_member` (`member_name`, `username`, `password`, `gender`, `no_telepon`, 'alamat', 'ban_status') "
-//                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-//        
-//        try {
-//            ps = database.getConnection().prepareStatement(query);
-//            ps.setString(1, nama_member);
-//            ps.setString(2, username);
-//            ps.setString(3, password);
-//            if (male.isSelected()) {
-//                ps.setString(4, "male");
-//            } else {
-//                ps.setString(4, "female");
-//            }
-//            ps.setString(5, nomor_telepon);
-//            ps.setString(6, alamat);
-//            ps.setString(7, "false");
-//            rs = ps.executeQuery();
-//            
-//            if (rs.next()) {
-//                JOptionPane.showMessageDialog(rootPane, "Selamat! Anda berhasil registrasi!");
-//                this.dispose();
-//                new Login().setVisible(true);
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Error", "Registration Error", 2);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }//GEN-LAST:event_registerActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed

@@ -67,10 +67,16 @@ public class Login extends javax.swing.JFrame {
         exit1 = new javax.swing.JButton();
         adminUsername = new javax.swing.JTextField();
         adminPassword = new javax.swing.JPasswordField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setResizable(false);
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
         exit.setBackground(new java.awt.Color(0, 153, 255));
@@ -82,7 +88,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(exit);
-        exit.setBounds(93, 192, 90, 32);
+        exit.setBounds(140, 190, 90, 32);
 
         memberLogin.setBackground(new java.awt.Color(0, 153, 255));
         memberLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -93,26 +99,26 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(memberLogin);
-        memberLogin.setBounds(201, 192, 90, 32);
+        memberLogin.setBounds(250, 190, 90, 32);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Username");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(158, 19, 69, 17);
+        jLabel1.setBounds(210, 20, 69, 17);
         jPanel1.add(memberUsername);
-        memberUsername.setBounds(65, 54, 255, 36);
+        memberUsername.setBounds(120, 50, 255, 36);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Password");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(159, 102, 67, 17);
+        jLabel2.setBounds(210, 100, 67, 17);
         jPanel1.add(memberPassword);
-        memberPassword.setBounds(65, 131, 255, 35);
+        memberPassword.setBounds(120, 130, 255, 35);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setText("Don't Have an Account? ");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(100, 240, 132, 16);
+        jLabel5.setBounds(150, 240, 132, 16);
 
         register.setForeground(new java.awt.Color(0, 0, 204));
         register.setText("Register");
@@ -125,9 +131,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(register);
-        register.setBounds(240, 240, 48, 16);
+        register.setBounds(290, 240, 48, 16);
 
         jTabbedPane1.addTab("Member", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Username");
@@ -146,7 +154,7 @@ public class Login extends javax.swing.JFrame {
 
         exit1.setBackground(new java.awt.Color(0, 153, 255));
         exit1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        exit1.setText("Tutup");
+        exit1.setText("Close");
         exit1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exit1ActionPerformed(evt);
@@ -164,48 +172,76 @@ public class Login extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(103, 103, 103)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(adminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(adminPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel2Layout.createSequentialGroup()
-                            .addComponent(exit1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(AdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(131, 131, 131))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(exit1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(AdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(adminPassword))
+                .addGap(114, 114, 114))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(adminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(adminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exit1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Admin", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("LOGIN");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -214,6 +250,7 @@ public class Login extends javax.swing.JFrame {
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new Landing().setVisible(true);
     }//GEN-LAST:event_exitActionPerformed
 
     private void memberLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberLoginActionPerformed
@@ -234,7 +271,7 @@ public class Login extends javax.swing.JFrame {
             if (rs.next()) {
 //                session = username;
                 loginSess.setSession(username);
-                JOptionPane.showMessageDialog(rootPane, "Selamat Datang!");
+                JOptionPane.showMessageDialog(rootPane, "Welcome!");
                 this.dispose();
                 new Landing().setVisible(true);
             } else {
@@ -247,6 +284,7 @@ public class Login extends javax.swing.JFrame {
 
     private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
         this.dispose();
+        new Landing().setVisible(true);
     }//GEN-LAST:event_exit1ActionPerformed
 
     private void AdminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLoginActionPerformed
@@ -267,7 +305,7 @@ public class Login extends javax.swing.JFrame {
             if (rs.next()) {
 //                session = "admin";
                 loginSess.setSession("admin");
-                JOptionPane.showMessageDialog(rootPane, "Selamat Datang Admin!");
+                JOptionPane.showMessageDialog(rootPane, "Welcome Admin!");
                 this.dispose();
                 new Landing().setVisible(true);
             } else {
@@ -341,8 +379,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton memberLogin;
     private javax.swing.JPasswordField memberPassword;

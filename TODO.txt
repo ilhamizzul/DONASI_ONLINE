@@ -8,22 +8,24 @@
 [d] session
 [d] register
 [d] logout
-[o] gui tambah donasi
+[d] gui tambah donasi
 [d] tambah donasi
 [d] gui lihat profil
 [d] gui verifikasi petisi donasi
 [d] gui detail donasi
 [d] send donasi
-[o] gui send donasi
-[o] gui admin action
+[d] gui send donasi
+[d] gui admin action
 [ ] class person
-[ ] gui ban member
+[o] gui ban member
+   [d] gui see member
+   [ ] functional shet
 [ ] ???
 [ ] done
 
 BUG:
-    [ ] Di admin, kalau mau admin action, masih belum bisa
-    [ ] untuk array table headnya mungkin disamain aja admin sama usernya
+    [d] Di admin, kalau mau admin action, masih belum bisa
+    [d] untuk array table headnya mungkin disamain aja admin sama usernya
 
 d: done
 o: on progress

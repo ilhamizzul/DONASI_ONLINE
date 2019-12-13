@@ -42,10 +42,12 @@ public class sendDonation extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Send Donation");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SEND DONATION");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,7 +171,7 @@ public class sendDonation extends javax.swing.JFrame {
                 target = rs.getInt("target");
                 current_acv = rs.getInt("current_acv");
             } else {
-                JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+                JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(addDonation.class.getName()).log(Level.SEVERE, null, ex);

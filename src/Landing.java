@@ -24,9 +24,6 @@ import javax.swing.table.DefaultTableModel;
  * @author ASUS
  */
 public class Landing extends javax.swing.JFrame {
-    String nol_jam ="";
-    String nol_menit="";
-    String nol_detik="";
     String getStatus="waiting";
     
     
@@ -38,7 +35,7 @@ public class Landing extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance(); 
         cal.getTime(); 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); 
-        tanggal.setText(sdf.format(cal.getTime()));
+        tanggal.setText("Date: " + sdf.format(cal.getTime()));
         
         if (Login.loginSess.getSession() != "none") {
             username.setText("Welcome : " + Login.loginSess.getSession());
@@ -76,6 +73,8 @@ public class Landing extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tanggal = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         login = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -92,6 +91,7 @@ public class Landing extends javax.swing.JFrame {
         btnAction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("E-Donation");
         setPreferredSize(new java.awt.Dimension(1000, 800));
         setResizable(false);
         addFocusListener(new java.awt.event.FocusAdapter() {
@@ -120,6 +120,9 @@ public class Landing extends javax.swing.JFrame {
                 addDonationActionPerformed(evt);
             }
         });
+        if(Login.loginSess.getSession() == "admin") {
+            addDonation.setText("View Member");
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,31 +153,49 @@ public class Landing extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 50)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel1.setText("DONASI ONLINE");
+        jLabel1.setText("E-DONATION");
 
-        tanggal.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tanggal.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         tanggal.setForeground(new java.awt.Color(51, 0, 51));
         tanggal.setText("tanggal");
+
+        jLabel3.setBackground(new java.awt.Color(0, 51, 51));
+        jLabel3.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 0));
+        jLabel3.setText("Don't Turn Away, Give Today!");
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
-                .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -249,7 +270,7 @@ public class Landing extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -304,7 +325,7 @@ public class Landing extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(username)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(btnAction)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnWaiting, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,17 +376,14 @@ public class Landing extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +421,7 @@ public class Landing extends javax.swing.JFrame {
         if (Login.loginSess.getSession() != "none") {
             new Profil().setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+            JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1);
 
         }
 
@@ -412,10 +430,14 @@ public class Landing extends javax.swing.JFrame {
     private void addDonationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDonationActionPerformed
         // TODO add your handling code here:
         if (Login.loginSess.getSession() != "none") {
-            new addDonation().setVisible(true);
+            if (Login.loginSess.getSession() != "admin") {
+                new addDonation().setVisible(true);
+            } else {
+                new viewMember().setVisible(true);
+            }
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+            JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1);
 
         }
     }//GEN-LAST:event_addDonationActionPerformed
@@ -429,7 +451,7 @@ public class Landing extends javax.swing.JFrame {
         if (Login.loginSess.getSession() == "admin") {
             SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation JOIN tb_member using (id_member)";
         } else {
-            SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept'";
+            SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept' and clear_status = 'not_done'";
         }
         
         ResultSet rs = database.executeQuery(SQL);
@@ -459,9 +481,13 @@ public class Landing extends javax.swing.JFrame {
                         dataTable.getSelectedRow(), 1
                 ).toString()
         );
-        getStatus = dataTable.getValueAt(
+        if (Login.loginSess.getSession() == "admin") {
+            getStatus = dataTable.getValueAt(
                         dataTable.getSelectedRow(), 4
                 ).toString();
+            System.out.println(getStatus);
+        }
+        
         
     }//GEN-LAST:event_dataTableMouseClicked
 
@@ -471,10 +497,10 @@ public class Landing extends javax.swing.JFrame {
                 new detailDonation().setVisible(true);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Anda belum memilih donasi yang ingin dilihat", "Error", 1);
+                JOptionPane.showMessageDialog(null, "Please choose the data row first before seeing the detail!", "Error", 1);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "User Belum Melakukan Login", "Error", 1);
+            JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1);
         }
     }//GEN-LAST:event_viewDetailActionPerformed
 
@@ -519,7 +545,7 @@ public class Landing extends javax.swing.JFrame {
 
     private void btnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionActionPerformed
         // TODO add your handling code here:
-        if (getStatus == "waiting") {
+        if ("waiting".equals(getStatus)) {
             this.dispose();
             new AdminAction().setVisible(true);
         } else {
@@ -583,12 +609,14 @@ public class Landing extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton login;
     private javax.swing.JButton profil;
     private javax.swing.JLabel tanggal;
