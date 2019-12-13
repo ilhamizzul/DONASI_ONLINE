@@ -209,7 +209,7 @@ public class addDonation extends javax.swing.JFrame {
         String status_acceptance = "waiting";
         String clear_status = "not_done";
         String id_member = "";
-        String get_id_member = "SELECT id_member FROM tb_member WHERE USERNAME='" + Login.getSession() + "'";
+        String get_id_member = "SELECT id_member FROM tb_member WHERE USERNAME='" + Login.loginSess.getSession() + "'";
         
         try {
             ps = database.getConnection().prepareStatement(get_id_member);

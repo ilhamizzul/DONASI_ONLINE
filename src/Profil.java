@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class Profil extends javax.swing.JFrame {
     
-    private String session = Login.getSession();
+    private String session = Login.loginSess.getSession();
 
     /**
      * Creates new form Profil

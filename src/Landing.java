@@ -48,15 +48,17 @@ public class Landing extends javax.swing.JFrame {
         
     }
     
-    private static String session = "none";
-
-    public static String getDonateSession() {
-        return session;
-    }
-
-    public static void setDonateSession(String session) {
-        Landing.session = session;
-    }
+//    private static String session = "none";
+//
+//    public static String getDonateSession() {
+//        return session;
+//    }
+//
+//    public static void setDonateSession(String session) {
+//        Landing.session = session;
+//    }
+    
+    static Session TableSess = new Session("none");
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -209,11 +211,11 @@ public class Landing extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Petition Maker", "Petition Name", "Current Achievement", "Target"
+                "Petition Maker", "Petition Name", "Current Achievement", "Target", "Status Acceptance"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -240,7 +242,7 @@ public class Landing extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -399,15 +401,15 @@ public class Landing extends javax.swing.JFrame {
     }//GEN-LAST:event_addDonationActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        String kolom[] = {"Petition Maker", "Petition Name", "Current Achievement", "Target"};
+        String kolom[] = {"Petition Maker", "Petition Name", "Current Achievement", "Target", "Status Acceptance"};
             
         DefaultTableModel dtm = new DefaultTableModel(null, kolom);
         
         String SQL;
         if (Login.loginSess.getSession() == "admin") {
-            SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member)";
+            SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation JOIN tb_member using (id_member)";
         } else {
-            SQL = "SELECT member_name, donation_name, current_acv, target FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept'";
+            SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept'";
         }
         
         ResultSet rs = database.executeQuery(SQL);
@@ -417,17 +419,22 @@ public class Landing extends javax.swing.JFrame {
                 String member_name = rs.getString(1);
                 String current_acv = rs.getString(3);
                 String target = rs.getString(4);
-                String data[] = {member_name, donation_name, current_acv, target};
+                String status = rs.getString(5);
+                String data[] = {member_name, donation_name, current_acv, target, status};
                 dtm.addRow(data);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Landing.class.getName()).log(Level.SEVERE, null, ex);
         }
         dataTable.setModel(dtm);
+        
+        if (Login.loginSess.getSession() != "admin") {
+            dataTable.removeColumn(dataTable.getColumnModel().getColumn(4));
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
-        Landing.setDonateSession(
+        TableSess.setSession(
                 dataTable.getValueAt(
                         dataTable.getSelectedRow(), 1
                 ).toString()
@@ -437,7 +444,7 @@ public class Landing extends javax.swing.JFrame {
 
     private void viewDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailActionPerformed
         if (Login.loginSess.getSession() != "none") {
-            if (Landing.getDonateSession() != "none") {
+            if (TableSess.getSession() != "none") {
                 new detailDonation().setVisible(true);
                 this.dispose();
             } else {
@@ -451,7 +458,7 @@ public class Landing extends javax.swing.JFrame {
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:        
         PreparedStatement ps;
-        String query = "UPDATE tb_donation SET status_acceptance='accept' WHERE donation_name='"+Landing.getDonateSession()+"'";
+        String query = "UPDATE tb_donation SET status_acceptance='accept' WHERE donation_name='"+TableSess.getSession()+"'";
         try {
             ps = database.getConnection().prepareStatement(query);
             ps.executeUpdate();
@@ -464,7 +471,7 @@ public class Landing extends javax.swing.JFrame {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         PreparedStatement ps;
-        String query = "UPDATE tb_donation SET status_acceptance='reject' WHERE donation_name='"+Landing.getDonateSession()+"'";
+        String query = "UPDATE tb_donation SET status_acceptance='reject' WHERE donation_name='"+TableSess.getSession()+"'";
         try {
             ps = database.getConnection().prepareStatement(query);
             ps.executeUpdate();
@@ -477,7 +484,7 @@ public class Landing extends javax.swing.JFrame {
     private void btnWaitingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWaitingActionPerformed
         // TODO add your handling code here:
         PreparedStatement ps;
-        String query = "UPDATE tb_donation SET status_acceptance='waiting' WHERE donation_name='"+Landing.getDonateSession()+"'";
+        String query = "UPDATE tb_donation SET status_acceptance='waiting' WHERE donation_name='"+TableSess.getSession()+"'";
         try {
             ps = database.getConnection().prepareStatement(query);
             ps.executeUpdate();

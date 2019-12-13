@@ -179,7 +179,7 @@ public class detailDonation extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
             ResultSet rs;
             PreparedStatement ps;
-            String query = "SELECT * FROM tb_member join tb_donation using (id_member) where donation_name = '"+Landing.getDonateSession()+"'";
+            String query = "SELECT * FROM tb_member join tb_donation using (id_member) where donation_name = '"+Landing.TableSess.getSession()+"'";
 
             try {
                 ps = database.getConnection().prepareStatement(query);

@@ -157,7 +157,7 @@ public class sendDonation extends javax.swing.JFrame {
         String clear_status = "";
         int current_acv = 0;
         int target = 0;
-        String get_data_donation = "SELECT * FROM tb_donation WHERE donation_name = '"+Landing.getDonateSession()+"'";
+        String get_data_donation = "SELECT * FROM tb_donation WHERE donation_name = '"+Landing.TableSess.getSession()+"'";
         
         try {
             ps = database.getConnection().prepareStatement(get_data_donation);
