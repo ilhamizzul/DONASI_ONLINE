@@ -27,6 +27,7 @@ public class Landing extends javax.swing.JFrame {
     String nol_jam ="";
     String nol_menit="";
     String nol_detik="";
+    String getStatus="waiting";
     
     
     /**
@@ -88,10 +89,16 @@ public class Landing extends javax.swing.JFrame {
         btnAccept = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         btnWaiting = new javax.swing.JButton();
+        btnAction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 800));
         setResizable(false);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -242,7 +249,7 @@ public class Landing extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -283,6 +290,13 @@ public class Landing extends javax.swing.JFrame {
             }
         });
 
+        btnAction.setText("Admin Action");
+        btnAction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -291,6 +305,8 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(username)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAction)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnWaiting, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,6 +325,7 @@ public class Landing extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(viewDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                         .addComponent(username)
@@ -328,6 +345,9 @@ public class Landing extends javax.swing.JFrame {
         }
         if (Login.loginSess.getSession() != "admin") {
             btnWaiting.setVisible(false);
+        }
+        if (Login.loginSess.getSession() != "admin") {
+            btnAction.setVisible(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -439,6 +459,9 @@ public class Landing extends javax.swing.JFrame {
                         dataTable.getSelectedRow(), 1
                 ).toString()
         );
+        getStatus = dataTable.getValueAt(
+                        dataTable.getSelectedRow(), 4
+                ).toString();
         
     }//GEN-LAST:event_dataTableMouseClicked
 
@@ -462,7 +485,7 @@ public class Landing extends javax.swing.JFrame {
         try {
             ps = database.getConnection().prepareStatement(query);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Berhasil accept petisi", "Success!", 1);
+            JOptionPane.showMessageDialog(null, "Accept petition success!", "Success!", 1);
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -475,7 +498,7 @@ public class Landing extends javax.swing.JFrame {
         try {
             ps = database.getConnection().prepareStatement(query);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Berhasil reject petisi", "Success!", 1);
+            JOptionPane.showMessageDialog(null, "Reject petition success", "Success!", 1);
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -493,6 +516,22 @@ public class Landing extends javax.swing.JFrame {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnWaitingActionPerformed
+
+    private void btnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionActionPerformed
+        // TODO add your handling code here:
+        if (getStatus == "waiting") {
+            this.dispose();
+            new AdminAction().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Can't modify accepted/rejected petition", "Error!", 1);
+            System.out.println(getStatus);
+        }
+        
+    }//GEN-LAST:event_btnActionActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formFocusGained
 
     /**
      * @param args the command line arguments
@@ -537,6 +576,7 @@ public class Landing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDonation;
     private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnAction;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnWaiting;
     private javax.swing.JTable dataTable;
