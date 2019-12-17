@@ -222,8 +222,13 @@ public class detailDonation extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void donateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donateActionPerformed
-        new sendDonation().setVisible(true);
-        this.dispose();
+        if ("admin".equals(Login.loginSess.getSession())) {
+            JOptionPane.showMessageDialog(this, "Admin Can't Add Donation :(","Error",JOptionPane.WARNING_MESSAGE);
+        } else {
+            new sendDonation().setVisible(true);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_donateActionPerformed
 
     /**

@@ -192,6 +192,8 @@ public class AdminAction extends javax.swing.JFrame {
             ps = database.getConnection().prepareStatement(query);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Successfully Accepting the petition!", "Success!", 1);
+            this.dispose();
+            new Landing().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }

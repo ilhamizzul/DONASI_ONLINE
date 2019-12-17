@@ -62,6 +62,12 @@ public class Profil extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        BanMember = new javax.swing.JButton();
+        alert1 = new javax.swing.JLabel();
+        caution = new javax.swing.JLabel();
+        alert2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        ban_status = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("User Profile");
@@ -82,7 +88,7 @@ public class Profil extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
+                .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(112, 112, 112))
         );
@@ -123,30 +129,74 @@ public class Profil extends javax.swing.JFrame {
             }
         });
 
+        BanMember.setBackground(new java.awt.Color(255, 0, 51));
+        BanMember.setForeground(new java.awt.Color(255, 255, 255));
+        BanMember.setText("CHANGE BAN STATUS");
+        BanMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BanMemberActionPerformed(evt);
+            }
+        });
+
+        alert1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        alert1.setForeground(new java.awt.Color(255, 0, 0));
+        alert1.setText("Banning a member will causing this account can't");
+
+        caution.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        caution.setForeground(new java.awt.Color(255, 0, 0));
+        caution.setText("CAUTION!");
+
+        alert2.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        alert2.setForeground(new java.awt.Color(255, 0, 0));
+        alert2.setText("be accessing anymore");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel7.setText("Ban Status");
+
+        ban_status.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        ban_status.setForeground(new java.awt.Color(153, 0, 0));
+        ban_status.setText("          ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(67, 67, 67)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(username)
-                    .addComponent(member_name)
-                    .addComponent(number)
-                    .addComponent(address)
-                    .addComponent(gender))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(alert1)
+                            .addComponent(alert2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BanMember)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(username)
+                                    .addComponent(member_name)
+                                    .addComponent(number)
+                                    .addComponent(address)
+                                    .addComponent(gender)
+                                    .addComponent(ban_status)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(caution)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,10 +221,33 @@ public class Profil extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(address))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(ban_status))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(caution)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(alert1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(alert2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                        .addComponent(BanMember, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        //if(Login.loginSess.getSession() != "admin") {
+            //    alert1.setVisible(false);
+            //}
+        //if(Login.loginSess.getSession() != "admin") {
+            //    caution.setVisible(false);
+            //}
+        //if(Login.loginSess.getSession() != "admin") {
+            //    alert2.setVisible(false);
+            //}
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,12 +289,24 @@ public class Profil extends javax.swing.JFrame {
                 gender.setText(rs.getString("gender"));
                 number.setText("+62" + rs.getString("no_telepon"));
                 address.setText(rs.getString("alamat"));
+                ban_status.setText(rs.getString("ban_status"));
             } else {
                 JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        if(Login.loginSess.getSession() != "admin") {
+            BanMember.setVisible(false);
+            jLabel7.setVisible(false);
+            ban_status.setVisible(false);
+            caution.setVisible(false);
+            alert1.setVisible(false);
+            alert2.setVisible(false);
+            
+        }
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -231,6 +316,32 @@ public class Profil extends javax.swing.JFrame {
             new viewMember().setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BanMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BanMemberActionPerformed
+        PreparedStatement ps;
+        String query;
+        System.out.println(ban_status.getText());
+        if ("false".equals(ban_status.getText())) {
+            query = "UPDATE tb_member SET ban_status='true' WHERE member_name='"+viewMember.memberListSess.getSession()+"'";
+        } else {
+            query = "UPDATE tb_member SET ban_status='false' WHERE member_name='"+viewMember.memberListSess.getSession()+"'";
+        }
+//        query = "UPDATE tb_member SET ban_status='true' WHERE member_name='"+viewMember.memberListSess.getSession()+"'";
+        
+        try {
+            ps = database.getConnection().prepareStatement(query);
+            ps.executeUpdate();
+            if ("false".equals(ban_status.getText())) {
+                JOptionPane.showMessageDialog(null, "Ban " + viewMember.memberListSess.getSession() + " !", "Success!", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unban " + viewMember.memberListSess.getSession() + " !", "Success!", 1);
+            }
+            this.dispose();
+            new viewMember().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BanMemberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,7 +380,12 @@ public class Profil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BanMember;
     private javax.swing.JLabel address;
+    private javax.swing.JLabel alert1;
+    private javax.swing.JLabel alert2;
+    private javax.swing.JLabel ban_status;
+    private javax.swing.JLabel caution;
     private javax.swing.JLabel gender;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -278,6 +394,7 @@ public class Profil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel member_name;

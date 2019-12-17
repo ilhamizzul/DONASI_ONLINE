@@ -83,11 +83,6 @@ public class Landing extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         viewDetail = new javax.swing.JButton();
         username = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        btnAccept = new javax.swing.JButton();
-        btnReject = new javax.swing.JButton();
-        btnWaiting = new javax.swing.JButton();
         btnAction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,7 +100,7 @@ public class Landing extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         profil.setText("See Profile");
         profil.addActionListener(new java.awt.event.ActionListener() {
@@ -149,23 +144,23 @@ public class Landing extends javax.swing.JFrame {
             profil.setVisible(false);
         }
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(0, 51, 102));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 50)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("E-DONATION");
 
         tanggal.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        tanggal.setForeground(new java.awt.Color(51, 0, 51));
+        tanggal.setForeground(new java.awt.Color(255, 255, 255));
         tanggal.setText("tanggal");
 
         jLabel3.setBackground(new java.awt.Color(0, 51, 51));
         jLabel3.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Don't Turn Away, Give Today!");
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -199,7 +194,7 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setPreferredSize(new java.awt.Dimension(217, 60));
 
         login.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -263,7 +258,7 @@ public class Landing extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -274,8 +269,10 @@ public class Landing extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
 
+        viewDetail.setBackground(new java.awt.Color(255, 255, 255));
+        viewDetail.setForeground(new java.awt.Color(0, 0, 0));
         viewDetail.setText("View Detail");
         viewDetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,33 +281,11 @@ public class Landing extends javax.swing.JFrame {
         });
 
         username.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        username.setForeground(new java.awt.Color(255, 255, 255));
         username.setText("jLabel2");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Done", "Not Done" }));
-
-        jLabel2.setText("Donation Status");
-
-        btnAccept.setText("Accept");
-        btnAccept.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAcceptActionPerformed(evt);
-            }
-        });
-
-        btnReject.setText("Reject");
-        btnReject.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRejectActionPerformed(evt);
-            }
-        });
-
-        btnWaiting.setText("Waiting");
-        btnWaiting.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnWaitingActionPerformed(evt);
-            }
-        });
-
+        btnAction.setBackground(new java.awt.Color(255, 255, 255));
+        btnAction.setForeground(new java.awt.Color(0, 0, 0));
         btnAction.setText("Admin Action");
         btnAction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,18 +300,8 @@ public class Landing extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(username)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAction)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnWaiting, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -345,28 +310,13 @@ public class Landing extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(viewDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                        .addComponent(username)
-                        .addComponent(jComboBox1)
-                        .addComponent(jLabel2))
-                    .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnReject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnWaiting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewDetail, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(username)
+                    .addComponent(btnAction, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        if (Login.loginSess.getSession() != "admin") {
-            btnAccept.setVisible(false);
-        }
-        if (Login.loginSess.getSession() != "admin") {
-            btnReject.setVisible(false);
-        }
-        if (Login.loginSess.getSession() != "admin") {
-            btnWaiting.setVisible(false);
-        }
         if (Login.loginSess.getSession() != "admin") {
             btnAction.setVisible(false);
         }
@@ -409,10 +359,11 @@ public class Landing extends javax.swing.JFrame {
             new Login().setVisible(true);
             this.setVisible(false);
         } else {
-            System.out.println(Login.loginSess.getSession());
+            JOptionPane.showMessageDialog(null, "See You Later!", "See ya!", 1);
             Login.loginSess.setSession("none");
             new Landing().setVisible(true);
             this.setVisible(false);
+            
         }
     }//GEN-LAST:event_loginActionPerformed
 
@@ -449,9 +400,11 @@ public class Landing extends javax.swing.JFrame {
         
         String SQL;
         if (Login.loginSess.getSession() == "admin") {
-            SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation JOIN tb_member using (id_member)";
+            SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation JOIN "
+                    + "tb_member using (id_member) order by status_acceptance desc";
         } else {
-            SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation JOIN tb_member using (id_member) where status_acceptance = 'accept' and clear_status = 'not_done'";
+            SQL = "SELECT member_name, donation_name, current_acv, target, status_acceptance FROM tb_donation "
+                    + "JOIN tb_member using (id_member) where status_acceptance = 'accept' and clear_status = 'not_done'";
         }
         
         ResultSet rs = database.executeQuery(SQL);
@@ -503,45 +456,6 @@ public class Landing extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1);
         }
     }//GEN-LAST:event_viewDetailActionPerformed
-
-    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        // TODO add your handling code here:        
-        PreparedStatement ps;
-        String query = "UPDATE tb_donation SET status_acceptance='accept' WHERE donation_name='"+TableSess.getSession()+"'";
-        try {
-            ps = database.getConnection().prepareStatement(query);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Accept petition success!", "Success!", 1);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnAcceptActionPerformed
-
-    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-        // TODO add your handling code here:
-        PreparedStatement ps;
-        String query = "UPDATE tb_donation SET status_acceptance='reject' WHERE donation_name='"+TableSess.getSession()+"'";
-        try {
-            ps = database.getConnection().prepareStatement(query);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Reject petition success", "Success!", 1);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnRejectActionPerformed
-
-    private void btnWaitingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWaitingActionPerformed
-        // TODO add your handling code here:
-        PreparedStatement ps;
-        String query = "UPDATE tb_donation SET status_acceptance='waiting' WHERE donation_name='"+TableSess.getSession()+"'";
-        try {
-            ps = database.getConnection().prepareStatement(query);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Berhasil waiting petisi", "Success!", 1);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnWaitingActionPerformed
 
     private void btnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionActionPerformed
         // TODO add your handling code here:
@@ -601,14 +515,9 @@ public class Landing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDonation;
-    private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnAction;
-    private javax.swing.JButton btnReject;
-    private javax.swing.JButton btnWaiting;
     private javax.swing.JTable dataTable;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

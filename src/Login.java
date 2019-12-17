@@ -262,21 +262,41 @@ public class Login extends javax.swing.JFrame {
         
         String query = "SELECT * FROM `tb_member` WHERE `username` = ? AND `password` = ?";
         
+        // GET BAN STATUS
+        String ban_status = "";
+        String get_ban_status = "SELECT ban_status FROM tb_member WHERE username='" + username + "' AND password='" + password + "' ";
+        
+        try {
+            ps = database.getConnection().prepareStatement(get_ban_status);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                ban_status = rs.getString("ban_status");
+            } else {
+                JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(addDonation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(ban_status);
         try {
             ps = database.getConnection().prepareStatement(query);
             ps.setString(1, username);
             ps.setString(2, password);
             rs = ps.executeQuery();
-            
-            if (rs.next()) {
-//                session = username;
-                loginSess.setSession(username);
-                JOptionPane.showMessageDialog(rootPane, "Welcome!");
-                this.dispose();
-                new Landing().setVisible(true);
+            if (!"true".equals(ban_status)) {
+                if (rs.next()) {
+                    loginSess.setSession(username);
+                    JOptionPane.showMessageDialog(rootPane, "Welcome!");
+                    this.dispose();
+                    new Landing().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Login Error", 2);
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Login Error", 2);
+                JOptionPane.showMessageDialog(null, "User Account Has Been Banned!", "Login Error", 2);
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
