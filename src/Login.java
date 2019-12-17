@@ -273,7 +273,7 @@ public class Login extends javax.swing.JFrame {
             if (rs.next()) {
                 ban_status = rs.getString("ban_status");
             } else {
-                JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1);
+//                JOptionPane.showMessageDialog(null, "User is not Login", "Error", 1); // Bug: Kalau username invalid, jadi ada 2 message dialog, "user is not login", sama "invalid username"
             }
         } catch (SQLException ex) {
             Logger.getLogger(addDonation.class.getName()).log(Level.SEVERE, null, ex);
@@ -329,7 +329,7 @@ public class Login extends javax.swing.JFrame {
                 this.dispose();
                 new Landing().setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid Username or Password" + password, "Login Error", 2);
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Login Error", 2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
