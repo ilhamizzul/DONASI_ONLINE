@@ -204,7 +204,7 @@ public class Login extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Admin", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(0, 51, 102));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N

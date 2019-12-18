@@ -77,7 +77,7 @@ public class Profil extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,7 +297,7 @@ public class Profil extends javax.swing.JFrame {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if(Login.loginSess.getSession() != "admin") {
+        if(!"admin".equals(Login.loginSess.getSession())) {
             BanMember.setVisible(false);
             jLabel7.setVisible(false);
             ban_status.setVisible(false);

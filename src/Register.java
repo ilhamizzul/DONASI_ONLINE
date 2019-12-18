@@ -206,7 +206,7 @@ public class Register extends javax.swing.JFrame {
                 .addGap(71, 71, 71))
         );
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(0, 51, 102));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N

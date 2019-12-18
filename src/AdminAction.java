@@ -50,7 +50,7 @@ public class AdminAction extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Change Petition Status");
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
 
         label.setBackground(new java.awt.Color(255, 255, 255));
         label.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
